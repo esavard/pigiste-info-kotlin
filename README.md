@@ -74,7 +74,11 @@ https://www.linkedin.com/in/esavard/
 ---
 
 ## Licence
-Ce projet est un démonstrateur pers
+Ce projet est un démonstrateur personnel afin de tester les bonnes pratiques en développement logiciel ainsi que
+d'explorer de nouvelles technologies et outils.
+
+Ce logiciel est publié sous licence AGPL v3, veuillez me contacter pour une utilisation commerciale.
+
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
 ---
