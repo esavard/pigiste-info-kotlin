@@ -1,0 +1,38 @@
+@startuml
+title Hexagonal Architecture – pigiste.info
+
+actor User as "Freelancer / Client"
+
+rectangle "Inbound Adapters" {
+  [Web UI (Mustache / REST / GraphQL)]
+}
+
+rectangle "Application Layer" {
+  [Input Ports (UseCases)] --> [Domain Model]
+  [Domain Model] --> [Output Ports]
+}
+
+rectangle "Domain Model" as Domain {
+  [Entities / Value Objects / Aggregates]
+}
+
+rectangle "Outbound Adapters" {
+  [JPA Repositories]
+  [Mail/SMS Gateway]
+  [LinkedIn API]
+}
+
+database "PostgreSQL" as PG
+cloud "Mail/SMS Provider (e.g. Twilio)" as Twilio
+cloud "LinkedIn Public API" as LinkedIn
+
+User --> [Web UI (Mustache / REST / GraphQL)]
+[Web UI (Mustache / REST / GraphQL)] --> [Input Ports (UseCases)]
+[Output Ports] --> [JPA Repositories]
+[Output Ports] --> [Mail/SMS Gateway]
+[Output Ports] --> [LinkedIn API]
+[JPA Repositories] --> PG
+[Mail/SMS Gateway] --> Twilio
+[LinkedIn API] --> LinkedIn
+
+@enduml

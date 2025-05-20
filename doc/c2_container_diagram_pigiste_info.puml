@@ -1,0 +1,26 @@
+@startuml
+!include  https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+title C2 – Container Diagram: pigiste.info
+
+Person(user, "User", "Freelancer or Client using the platform via web interface")
+
+System_Boundary(pigisteinfo, "pigiste.info - Monolith") {
+    Container(webapp, "Web Application", "Spring Boot with Kotlin", "Handles HTTP requests, business logic, authentication, rendering views or APIs")
+    Container(database, "Database", "PostgreSQL", "Stores users, assignments, proposals, profiles")
+    Container(graphqlapi, "GraphQL API", "Netflix DGS", "Exposes business use cases as a flexible API")
+    Container(auth, "Authentication Module", "Spring Security + JWT", "Manages login, roles, and token validation")
+    Container(view, "Server-rendered Frontend", "Mustache Templates", "Displays forms and lists via SSR")
+}
+
+System_Ext(mail, "Mail/SMS Gateway (e.g. Twilio)")
+System_Ext(linkedin, "LinkedIn Public API")
+
+Rel(user, webapp, "Uses", "HTTPS")
+Rel(webapp, auth, "Delegates authentication")
+Rel(webapp, graphqlapi, "Calls")
+Rel(webapp, view, "Renders views using")
+Rel(webapp, database, "Reads from and writes to", "JDBC / JPA")
+Rel(webapp, mail, "Sends account validation messages", "REST")
+Rel(webapp, linkedin, "Reads user profile data", "REST")
+
+@enduml

@@ -1,11 +1,11 @@
-package info.pigiste.pigistequebec
+package info.pigiste.app
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class PigisteQuebecApplication
+class PigisteInfoApplication
 
 fun main(args: Array<String>) {
-    runApplication<PigisteQuebecApplication>(*args)
+    runApplication<PigisteInfoApplication>(*args)
 }

@@ -69,7 +69,7 @@ kotlin {
 
 tasks.generateJava {
     schemaPaths.add("${projectDir}/src/main/resources/graphql-client")
-    packageName = "info.pigiste.pigistequebec.codegen"
+    packageName = "info.pigiste.app.codegen"
     generateClient = true
 }
 

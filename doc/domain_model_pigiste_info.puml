@@ -1,0 +1,78 @@
+@startuml
+title Domain Model – pigiste.info
+
+package "User" {
+    class UserAccount {
+        +UUID id
+        +Company company
+        +String firstname
+        +String lastname
+        +String email
+        +String passwordHash
+        +Boolean linkedinVerified
+        +LocalDateTime createdAt
+    }
+
+    abstract class Profile {
+        +UUID id
+        +UserAccount user
+        +String bio
+    }
+
+    class FreelancerProfile {
+    }
+
+    class ClientProfile {
+    }
+
+    FreelancerProfile --|> Profile
+    ClientProfile --|> Profile
+}
+
+package "Company" {
+    class Company {
+        +UUID id
+        +String name
+        +String registrationNumber
+        +String website
+    }
+
+    UserAccount --> "0..1" Company : member of >
+}
+
+package "Assignment" {
+    class Assignment {
+        +UUID id
+        +ClientProfile creator
+        +String title
+        +String description
+        +BigDecimal budgetMin
+        +BigDecimal budgetMax
+        +LocalDate deadline
+        +AssignmentStatus status
+    }
+
+    enum AssignmentStatus {
+        OPEN
+        ARCHIVED
+        CLOSED
+    }
+}
+
+package "Proposal" {
+    class Proposal {
+        +UUID id
+        +Assignment assignment
+        +FreelancerProfile freelancer
+        +BigDecimal hourlyRate
+        +String message
+        +LocalDateTime submittedAt
+    }
+}
+
+UserAccount "1" --> "0..1" ClientProfile
+UserAccount "1" --> "0..1" FreelancerProfile
+ClientProfile "1" --> "0..*" Assignment : creates >
+FreelancerProfile "1" --> "0..*" Proposal : submits >
+
+@enduml

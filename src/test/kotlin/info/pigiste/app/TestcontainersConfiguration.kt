@@ -1,4 +1,4 @@
-package info.pigiste.pigistequebec
+package info.pigiste.app
 
 import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection

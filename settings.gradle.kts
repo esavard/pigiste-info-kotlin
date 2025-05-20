@@ -1,1 +1,1 @@
-rootProject.name = "pigiste-quebec"
+rootProject.name = "pigiste-info"

@@ -65,6 +65,30 @@ http://localhost:8080/h2-console
 
 ---
 
+## Arborescence
+
+```
+domain/
+  model/               <-- Entities, Enums, Value Objects
+  ports/               <-- Interfaces des ports
+
+application/
+  port/input/          <-- Use cases (interfaces)
+  port/output/         <-- Ports techniques
+  service/             <-- Services métier (impl. des use cases)
+
+infrastructure/
+  persistence/         <-- JPA Repos + implémentation des ports de sortie
+  linkedin/            <-- Adapter LinkedIn (futur)
+  security/            <-- JWT, Spring Security
+
+web/
+  security/            <-- SecurityConfig
+  graphql/             <-- GraphQL API
+```
+
+---
+
 ## Auteur
 Étienne Savard — développeur fullstack senior passionné par les pratiques modernes, la qualité logicielle et les
 projets à impact local.
@@ -73,11 +97,11 @@ https://www.linkedin.com/in/esavard/
 
 ---
 
-## Licence
+## À propos & licence
 Ce projet est un démonstrateur personnel afin de tester les bonnes pratiques en développement logiciel ainsi que
 d'explorer de nouvelles technologies et outils.
 
-Ce logiciel est publié sous licence AGPL v3, veuillez me contacter pour une utilisation commerciale.
+Ce logiciel est publié sous licence AGPL v3. Pour une utilisation commerciale, veuillez me contacter.
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
